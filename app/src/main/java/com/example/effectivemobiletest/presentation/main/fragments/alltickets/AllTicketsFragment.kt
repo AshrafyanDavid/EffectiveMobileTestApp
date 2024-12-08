@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.effectivemobiletest.databinding.FragmentAllTicketsBinding
 import com.example.effectivemobiletest.presentation.utils.extensions.serializable
-import com.example.effectivemobiletest.presentation.utils.extensions.setBackPressedCustomAction
 import com.example.effectivemobiletest.shared.utils.PreferencesManager
 import com.example.effectivemobiletest.shared.utils.extensions.launchViewLifecycleScope
 import kotlinx.coroutines.flow.collectLatest
@@ -55,7 +54,7 @@ class AllTicketsFragment : Fragment() {
 
     private fun setClickListeners() {
         binding?.backImageView?.setOnClickListener {
-            handleBackPress()
+            parentFragmentManager.popBackStack()
         }
     }
 

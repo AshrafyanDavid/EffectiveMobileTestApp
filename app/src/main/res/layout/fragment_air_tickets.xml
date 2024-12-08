@@ -80,7 +80,7 @@
         app:layout_constraintTop_toTopOf="@id/view_inside" />
 
     <TextView
-        android:id="@+id/to_text_view"
+        android:id="@+id/destination_text_view"
         style="@style/ButtonText1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

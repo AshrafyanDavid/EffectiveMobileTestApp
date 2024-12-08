@@ -1,8 +1,9 @@
 package com.example.effectivemobiletest.presentation.main.fragments
 
-import android.content.DialogInterface
+import android.app.Dialog
 import android.os.Bundle
 import android.text.Editable
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,6 @@ import androidx.core.widget.doAfterTextChanged
 import com.example.effectivemobiletest.R
 import com.example.effectivemobiletest.databinding.BottomSheetDialogSearchBinding
 import com.example.effectivemobiletest.presentation.main.fragments.country.CountryFragment
-import com.example.effectivemobiletest.presentation.utils.extensions.setBackPressedCustomAction
 import com.example.effectivemobiletest.presentation.utils.extensions.setOnDoneListener
 import com.example.effectivemobiletest.presentation.utils.openFragment
 import com.example.effectivemobiletest.shared.utils.PreferencesManager
@@ -21,13 +21,27 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 
-class BottomSheetDialogSearch : BottomSheetDialogFragment() {
+class SearchBottomSheetDialog : BottomSheetDialogFragment() {
 
     companion object {
-        fun getInstance() = BottomSheetDialogSearch()
+        fun getInstance() = SearchBottomSheetDialog()
     }
 
     private var binding: BottomSheetDialogSearchBinding? = null
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return super.onCreateDialog(savedInstanceState).apply {
+            setOnKeyListener { _, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_UP) {
+                    if (childFragmentManager.fragments.isNotEmpty()) {
+                        childFragmentManager.popBackStack()
+                        true
+                    } else false
+                } else false
+            }
+        }
+    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = BottomSheetDialogSearchBinding.inflate(inflater, container, false)
@@ -36,9 +50,6 @@ class BottomSheetDialogSearch : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setBackPressedCustomAction {
-            handleBackPress()
-        }
         loadCachedText()
         deletingVisibility()
         setListeners()
@@ -48,10 +59,6 @@ class BottomSheetDialogSearch : BottomSheetDialogFragment() {
             navigateToSearchedCountryFragment()
             binding?.destinationEditText?.clearFocus()
         }
-    }
-
-    private fun handleBackPress() {
-        parentFragmentManager.popBackStack()
     }
 
     private fun observeToKeyboardVisibilityEvent() {
@@ -140,9 +147,8 @@ class BottomSheetDialogSearch : BottomSheetDialogFragment() {
             with(behavior) {
                 state = BottomSheetBehavior.STATE_EXPANDED
                 isDraggable = true
-                isHideable = false
+                isHideable = true
                 skipCollapsed = true
-                setCancelable(false)
             }
 
             val bottomSheet = (dialog as BottomSheetDialog?)?.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) ?: return

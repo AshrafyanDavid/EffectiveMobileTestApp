@@ -16,7 +16,6 @@ import com.example.effectivemobiletest.R
 import com.example.effectivemobiletest.databinding.FragmentCountryBinding
 import com.example.effectivemobiletest.domain.model.TicketOffersModel
 import com.example.effectivemobiletest.presentation.main.fragments.alltickets.AllTicketsFragment
-import com.example.effectivemobiletest.presentation.utils.extensions.setBackPressedCustomAction
 import com.example.effectivemobiletest.presentation.utils.extensions.setOnDoneListener
 import com.example.effectivemobiletest.presentation.utils.openFragment
 import com.example.effectivemobiletest.shared.utils.PreferencesManager
@@ -57,19 +56,12 @@ class CountryFragment : Fragment() {
     }
 
     private fun initView() {
-        setBackPressedCustomAction {
-            handleBackPress()
-        }
         getTexts()
         setTodayDate()
         setCollectors()
         setClickListeners()
         doneListeners()
         observeToKeyboardVisibilityEvent()
-    }
-
-    private fun handleBackPress() {
-        parentFragmentManager.popBackStack()
     }
 
     private fun setCollectors() {
@@ -207,7 +199,7 @@ class CountryFragment : Fragment() {
                 openDatePickerForReturnDate()
             }
             backImageView.setOnClickListener {
-                handleBackPress()
+                parentFragmentManager.popBackStack()
             }
         }
     }

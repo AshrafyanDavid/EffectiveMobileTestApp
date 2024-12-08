@@ -8,7 +8,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.effectivemobiletest.databinding.FragmentAirTicketsBinding
-import com.example.effectivemobiletest.presentation.main.fragments.BottomSheetDialogSearch
+import com.example.effectivemobiletest.presentation.main.fragments.SearchBottomSheetDialog
 import com.example.effectivemobiletest.presentation.utils.extensions.setOnDoneListener
 import com.example.effectivemobiletest.shared.utils.PreferencesManager
 import com.example.effectivemobiletest.shared.utils.extensions.launchViewLifecycleScope
@@ -65,9 +65,9 @@ class AirTicketsFragment : Fragment() {
 
     private fun setListeners() {
         binding?.apply {
-            toTextView.setOnClickListener {
-                val bottomSheetDialog = BottomSheetDialogSearch()
-                BottomSheetDialogSearch().show(childFragmentManager, bottomSheetDialog.tag)
+            destinationTextView.setOnClickListener {
+                val bottomSheetDialog = SearchBottomSheetDialog()
+                SearchBottomSheetDialog().show(childFragmentManager, bottomSheetDialog.tag)
             }
 
             fromCountryEditText.doAfterTextChanged { text ->
