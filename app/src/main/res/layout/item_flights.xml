@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:clipChildren="false">
+
+    <View
+        android:id="@+id/flight_view"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="34dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/grey_1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/recommendation_view"
+        android:layout_width="130dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_corner_50"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toTopOf="@id/flight_view"
+        app:layout_constraintStart_toStartOf="@id/flight_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recommendation_text_view"
+        style="@style/Title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Самый удобный"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/recommendation_view"
+        app:layout_constraintEnd_toEndOf="@id/recommendation_view"
+        app:layout_constraintStart_toStartOf="@id/recommendation_view"
+        app:layout_constraintTop_toTopOf="@id/recommendation_view" />
+
+    <TextView
+        android:id="@+id/price_text_view"
+        style="@style/Title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/flight_view"
+        app:layout_constraintTop_toTopOf="@id/flight_view"
+        tools:text="6990 р" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/company_circle_image_view"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@color/red"
+        app:layout_constraintStart_toStartOf="@id/price_text_view"
+        app:layout_constraintTop_toBottomOf="@id/price_text_view" />
+
+    <TextView
+        android:id="@+id/time_start_text_view"
+        style="@style/Title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/company_circle_image_view"
+        app:layout_constraintTop_toBottomOf="@id/price_text_view"
+        tools:text="03:15" />
+
+    <ImageView
+        android:id="@+id/line_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:src="@drawable/ic_line"
+        app:layout_constraintBottom_toBottomOf="@id/time_start_text_view"
+        app:layout_constraintStart_toEndOf="@id/time_start_text_view"
+        app:layout_constraintTop_toTopOf="@id/time_start_text_view" />
+
+    <TextView
+        android:id="@+id/time_end_text_view"
+        style="@style/Title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/time_start_text_view"
+        app:layout_constraintStart_toEndOf="@id/line_image_view"
+        app:layout_constraintTop_toTopOf="@id/time_start_text_view"
+        tools:text=" 07:10" />
+
+    <TextView
+        android:id="@+id/code_send_text_view"
+        style="@style/Title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/grey_5"
+        app:layout_constraintStart_toStartOf="@id/time_start_text_view"
+        app:layout_constraintTop_toBottomOf="@id/time_start_text_view"
+        tools:text="VKO" />
+
+    <TextView
+        android:id="@+id/code_arrival_text_view"
+        style="@style/Title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey_5"
+        app:layout_constraintStart_toStartOf="@id/time_end_text_view"
+        app:layout_constraintTop_toTopOf="@id/code_send_text_view"
+        tools:text="AER" />
+
+    <TextView
+        android:id="@+id/estimated_time_text_view"
+        style="@style/Text2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/time_start_text_view"
+        app:layout_constraintEnd_toEndOf="@id/flight_view"
+        app:layout_constraintStart_toEndOf="@id/time_end_text_view"
+        app:layout_constraintTop_toTopOf="@id/time_start_text_view"
+        tools:text="4ч в пути" />
+</androidx.constraintlayout.widget.ConstraintLayout>

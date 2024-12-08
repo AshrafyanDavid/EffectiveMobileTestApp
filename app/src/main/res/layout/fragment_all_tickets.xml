@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:clickable="true"
+    android:focusable="true">
+
+    <View
+        android:id="@+id/flight_information_view"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/grey_2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/back_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:src="@drawable/ic_back_blue"
+        app:layout_constraintBottom_toBottomOf="@id/flight_information_view"
+        app:layout_constraintStart_toStartOf="@id/flight_information_view"
+        app:layout_constraintTop_toTopOf="@id/flight_information_view" />
+
+    <TextView
+        android:id="@+id/route_text_view"
+        style="@style/Title3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/back_image_view"
+        app:layout_constraintTop_toTopOf="@id/flight_information_view"
+        tools:text="Москва-Сочи" />
+
+    <TextView
+        android:id="@+id/route_info_text_view"
+        style="@style/Title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/grey_5"
+        app:layout_constraintStart_toStartOf="@id/route_text_view"
+        app:layout_constraintTop_toBottomOf="@id/route_text_view"
+        tools:text="23 февраля, 1 пассажир" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/flights_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flight_information_view" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
